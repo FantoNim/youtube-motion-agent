@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "style": "Gloam Style",
+  "illustrative": true,
+  "timingBasis": "illustrative",
+  "fps": 30,
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "approval": "planning-only",
+  "shots": [
+    {
+      "id": "illustrative-01",
+      "startSeconds": 0,
+      "endSeconds": 5,
+      "phrase": "Illustrative narration: a signed note changed who controlled the door.",
+      "cueBasis": "Invented planning text; replace with verified supplied recording cue before production.",
+      "purpose": "Explain changed authority without depicting an actual event.",
+      "dimension": "2D",
+      "family": "mechanism",
+      "claims": [
+        {
+          "text": "Illustrative permission flow, not a factual system diagram.",
+          "status": "illustrative",
+          "provenance": "Original hypothetical example."
+        }
+      ],
+      "styleEvidence": [
+        "G07"
+      ],
+      "layout": "Three anchors on cream: system left, note center, controller right; visible illustration label.",
+      "motion": {
+        "action": "Draw return curve, change system state, then hold.",
+        "entryFrames": 18,
+        "holdFrames": 120,
+        "exitFrames": 12,
+        "easing": "Clamped ease-out for reveal; no bounce."
+      },
+      "transitionCause": "Narration introduces a physical analogy next.",
+      "assetRights": "Original vector shapes; no external/source assets."
+    },
+    {
+      "id": "illustrative-02",
+      "startSeconds": 5,
+      "endSeconds": 10,
+      "phrase": "Illustrative narration: imagine that permission as a hinged doorway.",
+      "cueBasis": "Invented planning text; no audio file or production approval exists.",
+      "purpose": "Translate the already-explained relationship into a spatial metaphor.",
+      "dimension": "real3D",
+      "family": "spatial-metaphor",
+      "claims": [
+        {
+          "text": "Doorway is a visual analogy, not recorded evidence.",
+          "status": "illustrative",
+          "provenance": "Original hypothetical example."
+        }
+      ],
+      "styleEvidence": [
+        "G02",
+        "G07"
+      ],
+      "layout": "Original industrial room with a real ring opening and door hinge; crisp overlay labels.",
+      "motion": {
+        "action": "Small lateral camera move and single hinged opening, then hold.",
+        "entryFrames": 18,
+        "holdFrames": 120,
+        "exitFrames": 12,
+        "easing": "Clamped ease-in-out; no wall-clock or uncontrolled physics."
+      },
+      "transitionCause": "End of illustrative sample, not a final-video ending.",
+      "assetRights": "Procedural geometry proposal only; no models built or rendered.",
+      "geometry": {
+        "objects": [
+          "Room floor and wall geometry",
+          "Ring doorway with depth",
+          "Door cylinder under side-hinge parent",
+          "Small foreground plinth"
+        ],
+        "camera": {
+          "projection": "perspective",
+          "positionStart": [
+            1,
+            2,
+            8
+          ],
+          "positionEnd": [
+            1.6,
+            2,
+            7.5
+          ],
+          "target": [
+            0,
+            2,
+            0
+          ],
+          "fovDegrees": 42
+        },
+        "materials": "Proposed rough steel and matte wall, restrained reflective floor.",
+        "lights": "Proposed cool key, soft fill, small red status practical; settings not yet tested.",
+        "qa": [
+          "Door pivots at hinge, not center",
+          "Near/far clipping and intersections checked across motion",
+          "Perspective parallax and occlusion are actual geometry behavior",
+          "Encoded sample and actual listening required before approval"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "openclaw-local-motion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Editable local-only Remotion graphics template; synthetic fixture is a tool test, not narration",
+  "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "fixture": "node scripts/generate-fixture.mjs",
+    "studio": "node scripts/studio-local.cjs",
+    "compositions": "remotion compositions src/index.ts --props=props.example.json",
+    "sample": "remotion render src/index.ts MotionGraphic exports/sample-v001.mp4 --props=props.example.json --codec=h264 --audio-codec=aac --pixel-format=yuv420p --crf=18 --concurrency=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "remotion": "4.0.538",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
+  },
+  "overrides": {
+    "zod": "4.6.6"
+  }
+}

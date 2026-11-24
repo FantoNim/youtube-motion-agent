@@ -1,0 +1,10 @@
+Local Video Editorial Direction
+
+Editorial guidance adapted and modified from HyperFrames documentation.
+Copyright 2026 HeyGen, Inc.
+Upstream: https://github.com/heygen-com/hyperframes
+Pinned source: ab785e9c5c59e9542593e49b93f9547cb2665b44
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+Local modifications produce a renderer-independent editorial-only workflow.
+This adaptation is not endorsed by HeyGen and is not the official HyperFrames package.

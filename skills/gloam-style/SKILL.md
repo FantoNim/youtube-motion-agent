@@ -1,0 +1,24 @@
+---
+name: gloam-style
+description: "Create or plan Gloam Style, the evidence-led cinematic investigation look analyzed from Gloam's Binance documentary: restrained serif/monospace dossier graphics, cream and cool-gray evidence boards, dark spatial vault/asset metaphors, red annotations and amber clocks. Use for Gloam-style animation, documentary motion design, forensic timelines, paper evidence cards, or a hybrid 2D/2.5D/3D adaptation; not as proof of a particular source renderer or a request to copy its media."
+---
+
+# Gloam Style
+
+1. **Establish the brief and actual assets.** Read the project's existing files and current user directives. Record audience, aspect/fps, narration source, approved assets, evidence/fiction boundary and intended scene families using [the brief](assets/brief-template.md). Preserve prior versions. Analysis/planning is not permission to produce a full video. **Done:** a versioned brief names the timing master, scope and unresolved decisions.
+
+2. **Load the observed grammar, then label the adaptation.** Read [source evidence and limits](references/source-analysis.md), [visual system](references/visual-system.md), and [motion/editing](references/motion-and-editing.md). Distinguish observed 2D charts, 2.5D paper treatment and spatial 3D-looking sequences from proposed procedural geometry. Never infer source software, fonts, music, exact easing or factual correctness. **Done:** selected rules cite evidence IDs, with deviations and unverified matters labeled.
+
+3. **Lock speech and claim status before pictures.** Follow [voice-first timing](references/voice-first.md). Probe supplied narration; preserve it unless editing is requested. A script is optional; verify uncertain ASR. Use a source/program-time map after an approved spoken edit. Keep allegations, estimates and illustrative metaphors distinct from evidence. **Done:** every spoken interval has a planned visual/hold; every factual display has provenance and qualification.
+
+4. **Design a meaning-led shotlist.** Copy [shotlist-template.csv](assets/shotlist-template.csv). Choose a dossier, mechanism diagram, chronological ledger, restrained statistic, framed proof, or spatial metaphor because it communicates the beat—not to hit a quota. Follow [examples and failure modes](references/examples-and-failures.md). No automatic avatar insertion. **Done:** each beat has one focal point, verified cue, readable hold, transition cause and asset/rights status.
+
+5. **Specify and build through the existing local renderer.** Read the installed remotion-motion-graphics skill before implementation; for genuine geometry/camera shots read remotion-3d-scenes and its current verification evidence. That generic coffee-shop fixture does not prove a Gloam vault scene or stylistic fidelity. Read filmcraft if native editing/finishing is chosen. Use [procedural scene recipes](references/procedural-scenes.md) for 2D, 2.5D or genuine geometry; the [scene schema](assets/scene-spec.schema.json) and [illustrative example](assets/scene-spec.example.json) are handoff contracts, not runnable scenes. Inspect current runtime/lockfile first. No installs, paid services, uploads or synthetic voice merely to follow this style. **Done:** deterministic editable source matches the specification, with actual runtime gaps explicit.
+
+6. **Approve a representative sample.** Follow [rendering/QA](references/rendering-qa.md). Include a readable evidence board and, if planned, a geometry/camera beat with the real narration. Render a short sample, inspect encoded frames/motion and verify audio; obtain style approval before the full render unless explicitly waived. **Done:** sample and proof exist, and approval is recorded or pending—not presumed from a written guide or technical fixture.
+
+7. **Verify and deliver exactly the requested scope.** Check source preservation, complete narration coverage, cue alignment, typography, data integrity, 3D occlusion/material/light continuity, encoded output and privacy. Keep style metadata off learner-facing frames. Save projects/exports under the workspace, raw reference evidence private; never redistribute the analyzed source imagery. Read saved files back and report actual tests, paths and limits. **Done:** the requested artifact exists with specific QA evidence; blocked parts are named rather than marked complete.
+
+## Boundaries
+
+This is an independently authored production specification, not an official Gloam package, font/asset license, or claim of exact replication. It ships no source frames, audio, executable demo or tested 3D implementation. The reference was sampled across its full timeline plus dense selected windows; it was not continuously watched/listened to. Source visual confidence and adaptation/readiness confidence are separate. Recheck actual runtime readiness before production.

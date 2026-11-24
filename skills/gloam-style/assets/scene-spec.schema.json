@@ -1,0 +1,315 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gloam Style planning handoff, not renderer input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "style",
+    "illustrative",
+    "timingBasis",
+    "fps",
+    "canvas",
+    "approval",
+    "shots"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "style": {
+      "const": "Gloam Style"
+    },
+    "illustrative": {
+      "type": "boolean"
+    },
+    "timingBasis": {
+      "enum": [
+        "measured-recording",
+        "approved-edit-program-time",
+        "illustrative"
+      ]
+    },
+    "fps": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "approval": {
+      "enum": [
+        "planning-only",
+        "sample-pending",
+        "sample-approved",
+        "waived"
+      ]
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "startSeconds",
+          "endSeconds",
+          "phrase",
+          "cueBasis",
+          "purpose",
+          "dimension",
+          "family",
+          "claims",
+          "styleEvidence",
+          "layout",
+          "motion",
+          "transitionCause",
+          "assetRights"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "startSeconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "endSeconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "phrase": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cueBasis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dimension": {
+            "enum": [
+              "2D",
+              "2.5D",
+              "real3D"
+            ]
+          },
+          "family": {
+            "enum": [
+              "evidence-slab",
+              "mechanism",
+              "chronology",
+              "status-row",
+              "hero-statistic",
+              "case-folder",
+              "spatial-metaphor",
+              "framed-proof"
+            ]
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "text",
+                "status",
+                "provenance"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "enum": [
+                    "verified",
+                    "qualified",
+                    "illustrative",
+                    "unresolved"
+                  ]
+                },
+                "provenance": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "styleEvidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^G(0[1-9]|1[0-2])$"
+            }
+          },
+          "layout": {
+            "type": "string",
+            "minLength": 1
+          },
+          "motion": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "action",
+              "entryFrames",
+              "holdFrames",
+              "exitFrames",
+              "easing"
+            ],
+            "properties": {
+              "action": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entryFrames": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "holdFrames": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "exitFrames": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "easing": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "transitionCause": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assetRights": {
+            "type": "string",
+            "minLength": 1
+          },
+          "geometry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "objects",
+              "camera",
+              "materials",
+              "lights",
+              "qa"
+            ],
+            "properties": {
+              "objects": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "camera": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "projection",
+                  "positionStart",
+                  "positionEnd",
+                  "target",
+                  "fovDegrees"
+                ],
+                "properties": {
+                  "projection": {
+                    "const": "perspective"
+                  },
+                  "positionStart": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "positionEnd": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "target": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "fovDegrees": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "exclusiveMaximum": 180
+                  }
+                }
+              },
+              "materials": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lights": {
+                "type": "string",
+                "minLength": 1
+              },
+              "qa": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "dimension": {
+                  "const": "real3D"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "geometry"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$comment": "Validate cross-field timing manually: end>start; ordered nonoverlapping shots; entry+hold+exit fits shot at fps; geometry and assets actually exist. Schema validation is not render verification."
+}

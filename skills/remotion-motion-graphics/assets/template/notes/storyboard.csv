@@ -1,0 +1,4 @@
+start_seconds,end_seconds,spoken_text,visual,asset_source,audio,verification,approval
+0,0.8,"[no speech: synthetic fixture]","Header and word entrances","Local React/CSS","Fixture tone","measured fixture only","tool test; not style approved"
+0.8,2.2,"[no speech]","Staggered chart and cards","Illustrative placeholder chart","Fixture tone","measured fixture only","tool test; not style approved"
+2.2,4,"[no speech]","Reading hold then brief exit","Local React/CSS","Fixture tone","measured fixture only","tool test; not style approved"

@@ -1,0 +1,75 @@
+{
+  "templateOnly": true,
+  "executionReady": false,
+  "shotId": "S001",
+  "timing": {
+    "startSeconds": null,
+    "endSeconds": null,
+    "fps": null,
+    "basis": "measured recording / verified transcript / explicitly estimated",
+    "spokenPhrase": null
+  },
+  "purpose": {
+    "viewerQuestion": null,
+    "informationChange": null
+  },
+  "dimensionClass": "choose 2D | 2.5D | real-3D | hybrid",
+  "set": {
+    "location": null,
+    "geography": null,
+    "nearProps": [],
+    "backgroundDetailBudget": null
+  },
+  "cast": [
+    {
+      "id": null,
+      "approvedIdentitySource": null,
+      "identifier": null,
+      "expressionStart": null,
+      "expressionEnd": null,
+      "poseStart": null,
+      "poseEnd": null,
+      "handPropContacts": []
+    }
+  ],
+  "camera": {
+    "shotSize": null,
+    "position": null,
+    "target": null,
+    "projection": null,
+    "motionPurpose": null,
+    "focusPlane": null
+  },
+  "look": {
+    "paletteRoles": null,
+    "lights": null,
+    "materialRoles": null,
+    "screenSpaceText": null
+  },
+  "overlays": [
+    {
+      "meaning": null,
+      "anchor": null,
+      "text": null,
+      "dataProvenance": null
+    }
+  ],
+  "transition": {
+    "kind": null,
+    "cause": null,
+    "frameBounds": null
+  },
+  "animation": {
+    "frameDriven": true,
+    "seed": null,
+    "keyPoseFrameBounds": [],
+    "readingHoldFrames": null
+  },
+  "review": {
+    "sampleApproval": "pending",
+    "sourceVsAdaptationNotes": null,
+    "continuityChecks": [],
+    "audioReviewBasis": null,
+    "encodedEvidencePaths": []
+  }
+}

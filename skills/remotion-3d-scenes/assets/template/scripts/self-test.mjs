@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {PerspectiveCamera,Vector3} from 'three';
+import {cameraAt,TARGET,MARKERS,TOTAL_FRAMES,FPS,WIDTH,HEIGHT} from '../src/camera-path.mjs';
+assert.equal(TOTAL_FRAMES/FPS,5);
+assert.deepEqual(cameraAt(-100),cameraAt(0));assert.deepEqual(cameraAt(999),cameraAt(149));
+const expected=cameraAt(75); for(const f of [0,149,33,99,75])cameraAt(f);assert.deepEqual(cameraAt(75),expected);
+const projections=[0,75,149].map(frame=>{const camera=new PerspectiveCamera(38,WIDTH/HEIGHT,0.1,70);camera.position.set(...cameraAt(frame));camera.lookAt(...TARGET);camera.updateMatrixWorld();camera.updateProjectionMatrix();const markers=Object.fromEntries(Object.entries(MARKERS).map(([name,point])=>{const v=new Vector3(...point).project(camera);return [name,{x:(v.x+1)*WIDTH/2,y:(1-v.y)*HEIGHT/2,visible:Math.abs(v.x)<1&&Math.abs(v.y)<1&&Math.abs(v.z)<1}];}));return {frame,position:cameraAt(frame),markers};});
+for(const p of projections)for(const m of Object.values(p.markers))assert(m.visible);
+const relative=p=>p.markers.frontCup.x-p.markers.backMenu.x;
+const relativeParallax=relative(projections[2])-relative(projections[0]);assert(Math.abs(relativeParallax)>20);
+const source=fs.readFileSync(new URL('../src/CoffeeShop.tsx',import.meta.url),'utf8');
+assert(source.includes('ThreeCanvas'));assert(source.includes('shadows="soft"'));assert(!/Math.random|useFrame|Date.now|setInterval|requestAnimationFrame/.test(source));
+fs.mkdirSync(new URL('../proof/',import.meta.url),{recursive:true});
+const report={passed:true,frames:TOTAL_FRAMES,fps:FPS,duration:5,frameIndexedDeterministicCamera:true,relativeParallaxPixels:relativeParallax,projections};
+fs.writeFileSync(new URL('../proof/camera-parallax.json',import.meta.url),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

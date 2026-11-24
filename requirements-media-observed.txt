@@ -1,0 +1,9 @@
+# Observed Windows/Python 3.12 package pins, not a transitive or cross-platform lock.
+Pillow==10.4.0
+numpy==1.26.4
+faster-whisper==1.1.1
+ctranslate2==4.5.0
+huggingface-hub==1.13.0
+av==14.2.0
+onnxruntime==1.20.1
+tokenizers==0.22.2

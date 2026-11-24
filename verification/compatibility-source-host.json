@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-23",
+  "kitVersion": "0.2.0",
+  "scope": "Source-host verification; not destination readiness or model-driven end-to-end testing",
+  "nativeHermes": {
+    "runtimeRevision": "3b421578588243f920886e6fe79a6faa87ea026e",
+    "nativeApi": "tools.skills_tool.skill_view(name, preprocess=False)",
+    "isolatedHomeConfirmed": true,
+    "modelCalled": false,
+    "skills": [
+      {
+        "name": "animation-style-menu",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "6127c008d3a9e6e11904dc1c1560826eb851adaeec5a59ef56e06074d4c63179"
+      },
+      {
+        "name": "gloam-style",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "e8739f990e4fa70b92bcac68681a212bb5d494f6e32e3d4ecf09744e7c020882"
+      },
+      {
+        "name": "jeremy-style",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "ce1f9c2b937ad3533925ff374b89e6247cec036fc37c60f79c3654def3781a59"
+      },
+      {
+        "name": "local-video-clipping",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "89f6b3d44aca192ff17d55438c188e129f6f6976387f0ebc8703fb0bc03f4312"
+      },
+      {
+        "name": "local-video-editorial",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "98c937054439b17f860a4182369238da317b82a6906503c8a6946fdfe8aa70d1"
+      },
+      {
+        "name": "long-form-video-cleanup",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "76bf00b02f20ca6275cf0bf5e7eac25dfaf810ea4ab4075ab1fbe3e6fd786b5c"
+      },
+      {
+        "name": "motion-export-verification",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "27c18e5969461b807c8f120231818aa10322a2095063dd3960f8b3adbd7bf9bc"
+      },
+      {
+        "name": "remotion-3d-scenes",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "a9c078040e1b6b6ed6d41a79d5dcc2d7b76cc6c356b63838b4329b33aac3640d"
+      },
+      {
+        "name": "remotion-motion-graphics",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "1dbfa8e63cdac53d5ad308c0d9320dd4c2c2965bb00db1b233284715d10f13a2"
+      },
+      {
+        "name": "script-artifact-delivery",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "34e69159ba4741ffc8c5e16ad1eac3c0c3ace29cfcbb7ef589462309db0366ac"
+      },
+      {
+        "name": "video-lesson-guide",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "8d1e9d19b8832036896b63a3add38aa67aae08ed265680f171835ccdfe02e924"
+      },
+      {
+        "name": "youtube-script",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "b6b99df519ac07ef50f2ffd742b0668a15d53441a344c4df7052b60adb4d7c1e"
+      },
+      {
+        "name": "youtube-thumbnail-design",
+        "nativeLoad": true,
+        "canonicalReadable": true,
+        "canonicalSha256": "a0fa9d121dc9081b3089cb6f2cdde651e38451896198982bf21f8e32b28b493b"
+      }
+    ],
+    "scope": "Native loader API + canonical file reachability, not an end-to-end agent or renderer test"
+  },
+  "rendererIdentity": {
+    "comparedWith": "0.1.0 preserved deliverable",
+    "identicalFiles": 30,
+    "files": [
+      "skills/remotion-motion-graphics/assets/template/notes/storyboard.csv",
+      "skills/remotion-motion-graphics/assets/template/package-lock.json",
+      "skills/remotion-motion-graphics/assets/template/package.json",
+      "skills/remotion-motion-graphics/assets/template/props.example.json",
+      "skills/remotion-motion-graphics/assets/template/scripts/generate-fixture.mjs",
+      "skills/remotion-motion-graphics/assets/template/scripts/studio-local.cjs",
+      "skills/remotion-motion-graphics/assets/template/src/index.ts",
+      "skills/remotion-motion-graphics/assets/template/src/motion.tsx",
+      "skills/remotion-motion-graphics/assets/template/src/MotionGraphic.tsx",
+      "skills/remotion-motion-graphics/assets/template/src/Root.tsx",
+      "skills/remotion-motion-graphics/assets/template/src/theme.ts",
+      "skills/remotion-motion-graphics/assets/template/tsconfig.json",
+      "skills/remotion-motion-graphics/LICENSE",
+      "skills/remotion-motion-graphics/scripts/init-project.mjs",
+      "skills/remotion-motion-graphics/scripts/inspect-media.mjs",
+      "skills/remotion-motion-graphics/scripts/self-test.mjs",
+      "skills/remotion-3d-scenes/assets/template/.gitignore",
+      "skills/remotion-3d-scenes/assets/template/LICENSE",
+      "skills/remotion-3d-scenes/assets/template/package-lock.json",
+      "skills/remotion-3d-scenes/assets/template/package.json",
+      "skills/remotion-3d-scenes/assets/template/scripts/render-test.mjs",
+      "skills/remotion-3d-scenes/assets/template/scripts/self-test.mjs",
+      "skills/remotion-3d-scenes/assets/template/scripts/verify-output.mjs",
+      "skills/remotion-3d-scenes/assets/template/src/camera-path.d.mts",
+      "skills/remotion-3d-scenes/assets/template/src/camera-path.mjs",
+      "skills/remotion-3d-scenes/assets/template/src/CoffeeShop.tsx",
+      "skills/remotion-3d-scenes/assets/template/src/index.tsx",
+      "skills/remotion-3d-scenes/assets/template/tsconfig.json",
+      "skills/remotion-3d-scenes/LICENSE",
+      "helpers/motion-smoke.mjs"
+    ]
+  },
+  "tests": {
+    "total": 28,
+    "passed": 26,
+    "skipped": 2,
+    "skipReason": "Host cannot create test symlinks"
+  },
+  "openclaw": "Adapter/filesystem tests only; no new native agent/session registration",
+  "publication": "Not implied by test evidence"
+}

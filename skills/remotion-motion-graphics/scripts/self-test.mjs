@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {mkdtempSync, readFileSync, rmSync, existsSync} from 'node:fs';
+import {join, dirname, resolve} from 'node:path';
+import {tmpdir} from 'node:os';
+import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {createProject} from './init-project.mjs';
+import {inspectMedia} from './inspect-media.mjs';
+const skill = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const temp = mkdtempSync(join(tmpdir(), 'openclaw-remotion-helper-test-'));
+try {
+  const dest = join(temp, 'project');
+  assert.equal(createProject(dest), dest);
+  for (const p of ['src/index.ts', 'src/Root.tsx', 'src/motion.tsx', 'package.json', 'LICENSE', 'notes/storyboard.csv']) assert.ok(existsSync(join(dest, p)), p);
+  assert.throws(() => createProject(dest), /nonempty/);
+  assert.throws(() => createProject(join(skill, 'must-not-create-test-project')), /outside the skill/);
+  const syntax = spawnSync(process.execPath, ['--check', join(dest, 'scripts/studio-local.cjs')], {encoding: 'utf8'});
+  assert.equal(syntax.status, 0, syntax.stderr);
+  assert.throws(() => inspectMedia(join(temp, 'missing.mp4')), /ENOENT/);
+  const run = () => { const p = spawnSync(process.execPath, ['scripts/generate-fixture.mjs'], {cwd: dest, encoding: 'utf8'}); assert.equal(p.status, 0, p.stderr); };
+  run();
+  const fixture = join(dest, 'public/audio-fixture.wav');
+  const hash = () => createHash('sha256').update(readFileSync(fixture)).digest('hex');
+  const first = hash();
+  run();
+  assert.equal(hash(), first, 'fixture must be deterministic');
+  const probe = inspectMedia(fixture);
+  assert.equal(probe.hasAudio, true);
+  assert.equal(probe.durationSeconds, 4);
+  assert.equal(probe.streams[0].sampleRate, 48000);
+  assert.equal(probe.streams[0].channels, 1);
+  assert.throws(() => inspectMedia(fixture, join(temp, 'missing-ffprobe')), /could not run/);
+  const md = readFileSync(join(skill, 'SKILL.md'), 'utf8');
+  for (const match of md.matchAll(/\]\(([^)]+)\)/g)) if (!match[1].includes('://')) assert.ok(existsSync(join(skill, match[1])), 'missing resource ' + match[1]);
+  console.log(JSON.stringify({passed: true, checks: ['initialize', 'no-overwrite', 'no-project-inside-skill', 'studio-launcher-syntax', 'missing-media-error', 'deterministic-fixture', 'local-ffprobe-4s-mono-48k', 'missing-ffprobe-error', 'SKILL-resource-links'], fixtureSha256: first}, null, 2));
+} finally { rmSync(temp, {recursive: true, force: true}); }

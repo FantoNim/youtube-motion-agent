@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_sha256": "REPLACE_WITH_INSPECTED_SHA256",
+  "requested_count": 2,
+  "selection_basis": "REPLACE: full transcript and reviewed visual context; agent editorial selection",
+  "coverage": "REPLACE: complete source coverage map path and gaps/limitations",
+  "clips": [
+    {
+      "start": 1.3,
+      "title": "REPLACE: self-contained point",
+      "reason": "REPLACE: first distinct idea, explanation/payoff and why omitted context is safe",
+      "evidence": "REPLACE: transcript file/time/lines and reviewed visual frame paths",
+      "end": 13.8
+    },
+    {
+      "start": 36.7,
+      "title": "REPLACE: distinct useful answer",
+      "reason": "REPLACE: different complete idea, explanation/payoff and why no unresolved referents remain",
+      "evidence": "REPLACE: adjacent transcript + boundary visual evidence",
+      "end": 58.1
+    }
+  ],
+  "length_mode": "thought_led"
+}

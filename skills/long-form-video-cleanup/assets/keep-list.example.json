@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_sha256": "REPLACE_INSPECTED_SHA256",
+  "video_stream": 0,
+  "audio_stream": 1,
+  "mapping_reason": "REPLACE: retain all original A/V; actual absolute indexes",
+  "selection_basis": "REPLACE: full-context conservative camera cleanup, not highlights",
+  "limitations": "REPLACE: ASR/timing/review uncertainty; do not claim listening if absent",
+  "quantization": "nearest_frame_reviewed",
+  "coverage": {
+    "duration": 10,
+    "basis": "REPLACE: actual full-source transcript and review provenance",
+    "windows": [
+      {
+        "start": 0,
+        "end": 10,
+        "status": "reviewed_transcript",
+        "evidence": "REPLACE: completed full transcript/chunk coverage ledger and timing anchors",
+        "timing_uncertainty_seconds": 0.2
+      }
+    ]
+  },
+  "keep": [
+    {
+      "start": 0,
+      "end": 3,
+      "reason": "REPLACE: why retain/remove this passage without losing meaning",
+      "transcript_evidence": "REPLACE: transcript path, timestamp segments/lines, adjacent context and retained alternate take",
+      "boundary_review": "REPLACE: actual original/join playback and visual review paths, quantized times, outcome/limits"
+    },
+    {
+      "start": 5,
+      "end": 10,
+      "reason": "REPLACE: why retain/remove this passage without losing meaning",
+      "transcript_evidence": "REPLACE: transcript path, timestamp segments/lines, adjacent context and retained alternate take",
+      "boundary_review": "REPLACE: actual original/join playback and visual review paths, quantized times, outcome/limits"
+    }
+  ],
+  "deletions": [
+    {
+      "start": 3,
+      "end": 5,
+      "reason": "REPLACE: why retain/remove this passage without losing meaning",
+      "transcript_evidence": "REPLACE: transcript path, timestamp segments/lines, adjacent context and retained alternate take",
+      "boundary_review": "REPLACE: actual original/join playback and visual review paths, quantized times, outcome/limits"
+    }
+  ]
+}

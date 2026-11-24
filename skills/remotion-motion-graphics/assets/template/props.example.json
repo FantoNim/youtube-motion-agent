@@ -1,0 +1,20 @@
+{
+  "durationSeconds": 4,
+  "fps": 30,
+  "width": 1280,
+  "height": 720,
+  "title": "Made here. Rendered locally.",
+  "subtitle": "Frame-driven type, shapes and audio.",
+  "audioSrc": "audio-fixture.wav",
+  "mediaSrc": "",
+  "mediaKind": "image",
+  "captionPages": [],
+  "palette": {
+    "ink": "#111827",
+    "hero": "#BFDBFE",
+    "accent": "#2563EB",
+    "background": "#F8FAFC",
+    "highlight": "#DBEAFE",
+    "card": "#FFFFFF"
+  }
+}

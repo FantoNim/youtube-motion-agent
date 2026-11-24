@@ -1,0 +1,2 @@
+# Preserve byte hashes in manifest.json across checkouts.
+* -text

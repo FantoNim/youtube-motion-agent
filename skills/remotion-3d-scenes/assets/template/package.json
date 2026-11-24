@@ -1,0 +1,32 @@
+{
+  "name": "remotion-3d-scenes-local-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Silent deterministic synthetic ThreeCanvas coffee-shop technical test, not an approved style",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/self-test.mjs",
+    "render": "node scripts/render-test.mjs",
+    "verify": "node scripts/verify-output.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.538",
+    "@remotion/cli": "4.0.538",
+    "@remotion/renderer": "4.0.538",
+    "@remotion/three": "4.0.538",
+    "@react-three/fiber": "9.2.0",
+    "remotion": "4.0.538",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/three": "0.180.0"
+  },
+  "overrides": {
+    "zod": "4.6.6"
+  }
+}

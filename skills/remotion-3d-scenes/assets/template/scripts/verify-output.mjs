@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');process.chdir(root);
+const output='exports/coffee-shop-3d-silent-technical-test-v001.mp4';
+const run=(tool,args,encoding=null)=>{const r=spawnSync(tool,args,{encoding,maxBuffer:25*1024*1024,windowsHide:true});if(r.error)throw r.error;if(r.status!==0)throw new Error(tool+' failed '+r.status+': '+r.stderr);return r.stdout;};
+const probe=JSON.parse(run('ffprobe',['-v','error','-count_frames','-show_streams','-show_format','-of','json',output],'utf8'));
+const video=probe.streams.find(s=>s.codec_type==='video');assert(video);assert.equal(video.codec_name,'h264');assert.equal(video.width,960);assert.equal(video.height,540);assert.equal(video.r_frame_rate,'30/1');assert.equal(Number(video.nb_read_frames),150);assert.equal(Number(video.duration),5);assert.equal(probe.streams.filter(s=>s.codec_type==='audio').length,0,'Silent test must not fabricate narration/audio');
+run('ffmpeg',['-v','error','-i',output,'-f','null','-']);
+const raw=(input,frame=0)=>run('ffmpeg',['-v','error','-i',input,'-vf',"select='eq(n,"+frame+")'",'-frames:v','1','-f','rawvideo','-pix_fmt','rgb24','pipe:1']);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const first=raw(output,0), middle=raw(output,75), last=raw(output,149);
+assert.equal(first.length,960*540*3);assert.equal(last.length,first.length);
+const stats=b=>{let sum=0,sq=0,dark=0,count=0;for(let y=60;y<480;y++)for(let x=100;x<860;x++){const i=(y*960+x)*3;const v=(b[i]+b[i+1]+b[i+2])/3;sum+=v;sq+=v*v;dark+=v<10?1:0;count++;}return {mean:sum/count,std:Math.sqrt(sq/count-(sum/count)**2),blackFraction:dark/count};};
+const sampledStats=[first,middle,last].map(stats);for(const s of sampledStats){assert(s.mean>30);assert(s.std>20);assert(s.blackFraction<0.4);}
+let diff=0;for(let i=0;i<first.length;i++)diff+=Math.abs(first[i]-last[i]);const meanFirstLastDifference=diff/first.length;assert(meanFirstLastDifference>3,'Must have actual camera motion in encoded output');
+const middleRaw=raw('proof/source-middle.png'),repeatRaw=raw('proof/source-middle-repeat.png');assert.equal(sha(middleRaw),sha(repeatRaw),'Repeated fresh-browser frame must match exactly');
+for(const [f,name]of [[0,'encoded-first'],[75,'encoded-middle'],[149,'encoded-last']]){const dest='proof/'+name+'.png';if(!fs.existsSync(dest))run('ffmpeg',['-v','error','-n','-i',output,'-vf',"select='eq(n,"+f+")'",'-frames:v','1',dest]);}
+const camera=JSON.parse(fs.readFileSync('proof/camera-parallax.json','utf8'));
+const centroid=(pixels,center,rx,ry,predicate)=>{let sx=0,sy=0,n=0;for(let y=Math.max(0,Math.floor(center.y-ry));y<Math.min(540,center.y+ry);y++)for(let x=Math.max(0,Math.floor(center.x-rx));x<Math.min(960,center.x+rx);x++){const i=(y*960+x)*3;if(predicate(pixels[i],pixels[i+1],pixels[i+2])){sx+=x;sy+=y;n++;}}assert(n>10,'Encoded feature not found');return {x:sx/n,y:sy/n,pixels:n};};
+const encodedFeatures=[first,last].map((pixels,i)=>{const reference=camera.projections[i===0?0:2].markers;return {frame:i===0?0:149,frontCup:centroid(pixels,reference.frontCup,12,16,(r,g,b)=>r>45&&r<145&&g>25&&g<100&&b<70&&r>g*1.15),backMenu:centroid(pixels,reference.backMenu,42,26,(r,g,b)=>g>r*1.12&&g>b*1.05&&r<105&&g<125)};});
+const separation=p=>p.frontCup.x-p.backMenu.x;
+const encodedParallax=separation(encodedFeatures[1])-separation(encodedFeatures[0]);assert(Math.abs(encodedParallax)>15);assert(Math.abs(encodedParallax-camera.relativeParallaxPixels)<12);
+const logs=JSON.parse(fs.readFileSync('notes/browser-encode.json','utf8'));
+const backend=logs.logs.filter(l=>l.text.includes('THREE_BACKEND')).map(l=>JSON.parse(l.text.slice(l.text.indexOf('THREE_BACKEND ')+14)));
+assert(backend.length,'Actual WebGL renderer evidence required');
+const report={readiness:'encoded-render-verified',output,bytes:fs.statSync(output).size,sha256:sha(fs.readFileSync(output)),probe,fullDecodePassed:true,silentByDesign:true,sampledStats,meanFirstLastDifference,repeatedFrame:{frame:75,rawPixelSHA256:sha(middleRaw),exactMatch:true},cameraParallax:camera,encodedParallax:{method:"Model-guided color-region centroids from decoded first/last frames; not optical flow",features:encodedFeatures,relativeHorizontalPixels:encodedParallax},requestedBackend:logs.backendRequested,actualBackends:backend};
+fs.writeFileSync('proof/verification-report.json',JSON.stringify(report,null,2));fs.writeFileSync('proof/ffprobe.json',JSON.stringify(probe,null,2));console.log(JSON.stringify({...report,probe:{codec:video.codec_name,width:video.width,height:video.height,frames:video.nb_read_frames,duration:video.duration}},null,2));

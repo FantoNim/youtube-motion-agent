@@ -1,0 +1,26 @@
+{
+  "allowlistedSkillTrees": {
+    "starter": 20,
+    "remotion-motion-graphics": 25,
+    "remotion-3d-scenes": 18,
+    "local-video-editorial": 9,
+    "long-form-video-cleanup": 8,
+    "local-video-clipping": 8,
+    "video-lesson-guide": 7,
+    "jeremy-style": 10,
+    "gloam-style": 12,
+    "motion-export-verification": 5
+  },
+  "excluded": [
+    "personal identity and memory",
+    "Database corpus/index",
+    "recordings and reference media",
+    "avatars and private evidence",
+    "auth/config/browser sessions",
+    "node_modules/models/caches",
+    "upstream logger and cloud thumbnail installer"
+  ],
+  "patternScanFindings": [],
+  "limitedScanNotExhaustiveClearance": true,
+  "referenceAdaptations": []
+}
